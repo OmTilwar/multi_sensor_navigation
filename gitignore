@@ -1,0 +1,26 @@
+
+# ROS build artifacts
+build/
+install/
+log/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# VS Code settings
+.vscode/
+
+# Linux temporary files
+*.swp
+*.tmp
+*.log
+
+# Python cache
+__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
