@@ -13,7 +13,8 @@ The system is built using **C++**, runs in **Gazebo simulation**, and visualizes
 
 # System Overview
 
-Robots rely on multiple sensors to estimate their position and orientation.  
+Robots rely on multiple sensors to estimate their position and orientation.
+
 This project demonstrates a basic **sensor fusion pipeline** where:
 
 - IMU provides orientation and angular velocity
@@ -31,18 +32,18 @@ flowchart TD
 
 A[Gazebo Simulation] --> B[Robot Sensors]
 
-B --> C[IMU Topic /imu]
-B --> D[Odometry Topic /odom]
+B --> C["IMU Topic (/imu)"]
+B --> D["Odometry Topic (/odom)"]
 
 C --> E[Sensor Fusion Node]
 D --> E
 
-E --> F[Fused Pose /fused_pose]
+E --> F["Fused Pose (/fused_pose)"]
 
 F --> G[RViz Visualization]
 
 H[Keyboard Teleoperation]
-H --> I[/cmd_vel]
+H --> I["Velocity Command (/cmd_vel)"]
 I --> A
 ```
 
@@ -113,13 +114,12 @@ multi_sensor_navigation
 | /odom | Wheel odometry |
 | /fused_pose | Estimated robot pose |
 | /cmd_vel | Velocity commands |
-| /scan | LiDAR data |
 
 ---
 
 # Prerequisites
 
-Before running the project, ensure the following are installed:
+Before running the project ensure:
 
 - Ubuntu 22.04
 - ROS2 Humble
@@ -165,7 +165,7 @@ source install/setup.bash
 
 # Running the Project
 
-## 1. Launch Gazebo Simulation
+## 1 Launch Gazebo Simulation
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -175,9 +175,7 @@ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 
 ---
 
-## 2. Run the Sensor Fusion Node
-
-Open a new terminal.
+## 2 Run Sensor Fusion Node
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -187,7 +185,7 @@ ros2 run multi_sensor_navigation ekf_fusion
 
 ---
 
-## 3. Control the Robot
+## 3 Control the Robot
 
 ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
@@ -204,13 +202,13 @@ d → turn right
 
 ---
 
-## 4. Monitor Fused Pose
+## 4 Monitor Fused Pose
 
 ```bash
 ros2 topic echo /fused_pose
 ```
 
-Example output:
+Example:
 
 ```
 x: -1.92
@@ -220,7 +218,7 @@ theta: 0.12
 
 ---
 
-# Visualizing the Pose in RViz
+# Visualizing Pose in RViz
 
 Launch RViz:
 
@@ -234,24 +232,20 @@ Set:
 Fixed Frame → map
 ```
 
-Add display:
+Add:
 
 ```
 Pose → /fused_pose
 ```
 
-This shows the robot's estimated pose and orientation.
-
 ---
 
 # Example Workflow
 
-Typical development setup uses multiple terminals:
-
-Terminal 1 – Gazebo simulation  
-Terminal 2 – EKF fusion node  
-Terminal 3 – teleop keyboard control  
-Terminal 4 – ros2 topic echo /fused_pose  
+Terminal 1 → Gazebo simulation  
+Terminal 2 → EKF fusion node  
+Terminal 3 → teleop keyboard control  
+Terminal 4 → ros2 topic echo /fused_pose  
 
 ---
 
@@ -261,7 +255,6 @@ Terminal 4 – ros2 topic echo /fused_pose
 - Trajectory visualization in RViz
 - Integration with ROS2 Navigation2 stack
 - Obstacle avoidance
-- LiDAR-based localization
 
 ---
 
