@@ -41,7 +41,8 @@ E --> F[Fused Pose /fused_pose]
 
 F --> G[RViz Visualization]
 
-H[Keyboard Teleoperation] --> I[/cmd_vel]
+H[Keyboard Teleoperation]
+H --> I[/cmd_vel]
 I --> A
 ```
 
@@ -168,9 +169,7 @@ source install/setup.bash
 
 ```bash
 source /opt/ros/humble/setup.bash
-
 export TURTLEBOT3_MODEL=burger
-
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
 
@@ -183,7 +182,6 @@ Open a new terminal.
 ```bash
 source /opt/ros/humble/setup.bash
 source ~/auv_ws/install/setup.bash
-
 ros2 run multi_sensor_navigation ekf_fusion
 ```
 
@@ -250,17 +248,10 @@ This shows the robot's estimated pose and orientation.
 
 Typical development setup uses multiple terminals:
 
-Terminal 1
-Gazebo simulation
-
-Terminal 2
-EKF fusion node
-
-Terminal 3
-teleop keyboard control
-
-Terminal 4
-ros2 topic echo /fused_pose
+Terminal 1 – Gazebo simulation  
+Terminal 2 – EKF fusion node  
+Terminal 3 – teleop keyboard control  
+Terminal 4 – ros2 topic echo /fused_pose  
 
 ---
 
@@ -278,6 +269,6 @@ ros2 topic echo /fused_pose
 
 Om Pratap Tilwar  
 B.Tech Electronics and Communication Engineering (IoT)  
-Indian Institute of Information Technology Nagpur
+Indian Institute of Information Technology Nagpur  
 
 GitHub: https://github.com/omtilwar
